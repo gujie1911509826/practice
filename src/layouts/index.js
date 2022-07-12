@@ -48,7 +48,11 @@ const BasicLayout = (props) => {
               <Menu.Item key='login'>login</Menu.Item>
               <Menu.Item key='index'>Index</Menu.Item>
             </SubMenu>
-
+            <SubMenu title="生命周期学习">
+              <Menu.Item key='function_1'>函数组件</Menu.Item>
+              <Menu.Item key='class_1'>类组件</Menu.Item>
+              <Menu.Item key='index'>暂时没有</Menu.Item>
+            </SubMenu>
           </Menu>
         </div>
         <div className={styles.right_countent}>

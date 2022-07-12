@@ -12,7 +12,9 @@ export default {
         { path: '/index', component: '../pages/index/index' },
         { path: '/home', component: '../pages/home/index' },
         { path: '/time', component: '../pages/time/index' },
-        { path: '/table', component: '../pages/table/index' }
+        { path: '/table', component: '../pages/table/index' },
+        { path: '/class_1', component: '../pages/class_1/index' },
+        { path: '/function_1', component: '../pages/function_1/index' }
       ]
     }
   ],
