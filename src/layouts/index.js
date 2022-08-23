@@ -44,9 +44,9 @@ const BasicLayout = (props) => {
               </Menu.ItemGroup>
             </SubMenu>
             <SubMenu title="系统基础">
-              <Menu.Item key='home'>home</Menu.Item>
-              <Menu.Item key='login'>login</Menu.Item>
-              <Menu.Item key='index'>Index</Menu.Item>
+              <Menu.Item key='ReaactRoute'>ReaactRoute</Menu.Item>
+              <Menu.Item key='HookStudy'>HookStudy</Menu.Item>
+              <Menu.Item key='RefPropsSendMessage'>RefPropsSendMessage</Menu.Item>
             </SubMenu>
             <SubMenu title="生命周期学习">
               <Menu.Item key='function_1'>函数组件</Menu.Item>

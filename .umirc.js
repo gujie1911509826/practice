@@ -8,9 +8,9 @@ export default {
       component: '../layouts/index',
       routes: [
         { path: '/', component: '../pages/index' },
-        { path: '/login', component: '../pages/login/index' },
-        { path: '/index', component: '../pages/index/index' },
-        { path: '/home', component: '../pages/home/index' },
+        { path: '/HookStudy', component: '../pages/HookStudy/index' },
+        { path: '/RefPropsSendMessage', component: '../pages/RefPropsSendMessage/index' },
+        { path: '/ReaactRoute', component: '../pages/ReaactRoute/index' },
         { path: '/time', component: '../pages/time/index' },
         { path: '/table', component: '../pages/table/index' },
         { path: '/class_1', component: '../pages/class_1/index' },

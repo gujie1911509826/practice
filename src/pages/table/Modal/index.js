@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react';
 const Table_Modal = (props) => {
     const { visible_props, ModalCallBack, params, form } = props;
 
-    const { getFieldDecorator,validateFields } = form;
+    const { getFieldDecorator, validateFields } = form;
     const [visible, setVisable] = useState(visible_props);
-    const [disabled , setDisable] = useState(false);
+    const [disabled, setDisable] = useState(false);
     useEffect(() => {
         console.log('这是郭杰测试Modal', form);
         form.setFieldsValue(params);
@@ -15,12 +15,17 @@ const Table_Modal = (props) => {
     }, [])
 
     const onOk = () => {
-        form.validateFields((error,value)=>{
-            if(error){}
-        })
-        ModalCallBack();
-        // setVisable(false);
-        console.log('这是郭杰测试ok');
+        form.validateFields()
+            .then(
+                (val) => {
+                    console.log(val)
+                    ModalCallBack();
+                    // setVisable(false);
+                    console.log('这是郭杰测试ok');
+
+                })
+            .catch((error) => console.log(error))
+
     }
     const onCancel = () => {
         // setVisable(false);
@@ -45,13 +50,14 @@ const Table_Modal = (props) => {
 
         }
     }
-    const form_arr = [
-        { label: '员工姓名', required: true, value: 'name' },
-        { label: '员工工号', required: true, value: 'num' },
-        { label: '员工邮箱', required: true, value: 'email' },
-        { label: '联系方式', required: true, value: 'phone' },
-        { label: '职级', required: true, value: 'level' },
-        { label: '状态', required: true, value: 'statue' }]
+    // const form_arr = [
+    //     { label: '员工姓名', required: true, value: 'name' },
+    //     { label: '员工工号', required: true, value: 'num' },
+    //     { label: '员工邮箱', required: true, value: 'email' },
+    //     { label: '联系方式', required: true, value: 'phone' },
+    //     { label: '职级', required: true, value: 'level' },
+    //     { label: '状态', required: true, value: 'statue' }
+    // ]
     return (
         <Modal
             visible={visible}
@@ -65,14 +71,15 @@ const Table_Modal = (props) => {
             <Form
                 {...formItemLayout}
             >
-                {form_arr.map((item,index)=>
-                    <Form.Item  key={index} label={item?.label}>
-                    {getFieldDecorator(item?.value, {
-                    rules: [{ required: item?.required || false, message: `请输入${item.label}` }],
-                    })(<Input disabled={false}/>)}
+                {/* 循环遍历表单值 */}
+                {/* {form_arr.map((item, index) =>
+                    <Form.Item key={index} label={item?.label}>
+                        {getFieldDecorator(item?.value, {
+                            rules: [{ required: item?.required || false, message: `请输入${item.label}` }],
+                        })(<Input disabled={false} />)}
                     </Form.Item>
-                )}
-                {/* <Form.Item label="员工姓名">
+                )} */}
+                <Form.Item label="员工姓名">
                     {getFieldDecorator('name', {
                         rules: [{ required: true, message: 'Please input your key!' }],
                     })(<Input />)}
@@ -89,8 +96,12 @@ const Table_Modal = (props) => {
                 </Form.Item>
                 <Form.Item label="联系方式">
                     {getFieldDecorator('phone', {
-                        rules: [{ required: true, message: 'Please input your key!' }],
-                    })(<Input />)}
+                        rules: [
+                            { required: true, message: 'Please input your key!' }, 
+                            {max:11,message:"不能超出11个字符"},
+                            {pattern:/^1[3456789]\d{9}$/,message:'手机号码不正确'}
+                           ],
+                    })(<Input maxLength={11}/>)}
                 </Form.Item>
                 <Form.Item label="职级">
                     {getFieldDecorator('level', {
@@ -101,7 +112,7 @@ const Table_Modal = (props) => {
                     {getFieldDecorator('statue', {
                         rules: [{ required: true, message: 'Please input your key!' }],
                     })(<Input />)}
-                </Form.Item> */}
+                </Form.Item>
 
 
             </Form>
